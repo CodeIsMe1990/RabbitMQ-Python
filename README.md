@@ -28,7 +28,7 @@ pip install pika --upgrade
 ```
 jsonpickle
 ```
-jsonpickle - pip install jsonpickle --upgrade
+pip install jsonpickle --upgrade
 ```
 
 To mount RabbitMQ docker image and start container<br />
