@@ -21,7 +21,7 @@ python
 docker
 ```
 
-**Project Dependencies**
+**Project Dependencies**<br />
 pika
 ```
 pip install pika --upgrade
