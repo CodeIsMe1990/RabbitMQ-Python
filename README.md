@@ -42,8 +42,8 @@ To run Parking system correctly
 ```
 py parkingWorker.py [host]
 py vacancyDisplay.py [host] [parking_lot_id] [slots_total] [slots_occupied]
-py parkingEntryMachine.py [host] [parking_lot_id] [license_place]
-py parkingExitMachine.py [host] [parking_lot_id] [license_place]
+py parkingEntry.py [host] [parking_lot_id] [license_place]
+py parkingExit.py [host] [parking_lot_id] [license_place]
 ```
 
 Run the worker:
@@ -60,14 +60,32 @@ py vacancyDisplay.py localhost 2 50 0
 
 Emulate entries and exits and see the vacancy displays get updated accordingly
 ```
-py parkingEntryMachine.py localhost 1 ABC123XYZ
-py parkingEntryMachine.py localhost 1 ABC124XYZ
-py parkingEntryMachine.py localhost 2 ABC125XYZ
-py parkingExitMachine.py localhost 1 ABC123XYZ
-py parkingEntryMachine.py localhost 2 ABC126XYZ
-py parkingEntryMachine.py localhost 1 ABC127XYZ
-py parkingExitMachine.py localhost 1 ABC124XYZ
-py parkingExitMachine.py localhost 2 ABC125XYZ
-py parkingExitMachine.py localhost 2 ABC127XYZ
-py parkingExitMachine.py localhost 1 ABC126XYZ
+py parkingEntry.py localhost 1 ABC123XYZ
+py parkingEntry.py localhost 1 ABC124XYZ
+py parkingEntry.py localhost 2 ABC125XYZ
+py parkingExit.py localhost 1 ABC123XYZ
+py parkingEntry.py localhost 2 ABC126XYZ
+py parkingEntry.py localhost 1 ABC127XYZ
+py parkingExit.py localhost 1 ABC124XYZ
+py parkingExit.py localhost 2 ABC125XYZ
+py parkingExit.py localhost 2 ABC127XYZ
+py parkingExit.py localhost 1 ABC126XYZ
+```
+Equivalent to:
+```
+parkingOneEntry = ParkingMachine(parking_machine_type= ParkingMachineType.Entry, host= 'localhost', parking_lot_id= 1)
+parkingOneExit = ParkingMachine(parking_machine_type= ParkingMachineType.Exit, host= 'localhost', parking_lot_id= 1)
+parkingTwoEntry = ParkingMachine(parking_machine_type= ParkingMachineType.Entry, host= 'localhost', parking_lot_id= 2)
+parkingTwoExit = ParkingMachine(parking_machine_type= ParkingMachineType.Exit, host= 'localhost', parking_lot_id= 2)
+
+parkingOneEntry.register_car(license_plate= 'ABC123XYZ')
+parkingOneEntry.register_car(license_plate= 'ABC124XYZ')
+parkingTwoEntry.register_car(license_plate= 'ABC125XYZ')
+parkingOneExit.register_car(license_plate= 'ABC123XYZ')
+parkingTwoEntry.register_car(license_plate= 'ABC126XYZ')
+parkingOneEntry.register_car(license_plate= 'ABC127XYZ')
+parkingOneExit.register_car(license_plate= 'ABC124XYZ')
+parkingTwoEntry.register_car(license_plate= 'ABC125XYZ')
+parkingTwoEntry.register_car(license_plate= 'ABC127XYZ')
+parkingOneExit.register_car(license_plate= 'ABC126XYZ')
 ```
