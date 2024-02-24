@@ -11,7 +11,7 @@ This repository contains examples of usage & implementation of RabbitMQ
 
 and Finally
 
-- ParkingSystem
+- **ParkingSystem**<br />
     a custom built example - A parking system that can register cars coming in and out of a parking lot and message the correct vacancy displays.
 
 
